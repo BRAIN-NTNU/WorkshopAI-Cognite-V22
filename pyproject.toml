@@ -1,0 +1,44 @@
+[tool.poetry]
+name = "brain-ntnu-workshop-ai-2022"
+version = "0.1.0"
+description = ""
+authors = ["Kristoffer Gjerde <kristoffer.gjerde@cognite.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+djitellopy = "^2.4.0"
+numpy = "^1.22.2"
+opencv-python = "^4.5.5"
+pygame = "^2.1.2"
+torchvision = "^0.11.3"
+torch = "^1.10.2"
+cognite-sdk = "^2.40.0"
+cognite-extractor-utils = "^2.0.3"
+python-dotenv = "^0.19.2"
+
+[tool.poetry.dev-dependencies]
+pre-commit = "^2.17.0"
+pytest = "^7.0.1"
+
+[tool.pytest.ini_options]
+filterwarnings = ["ignore::UserWarning"]
+
+[tool.poetry.scripts]
+# Setup scripts
+check-setup = "brain_ntnu_workshop_ai_2022.check_setup:main"
+
+# Workshop scripts
+getting-started = "brain_ntnu_workshop_ai_2022.workshop.getting_started:main"
+controller = "brain_ntnu_workshop_ai_2022.workshop.controller:main"
+object-detection = "brain_ntnu_workshop_ai_2022.workshop.object_detection:main"
+cdf-upload = "brain_ntnu_workshop_ai_2022.workshop.cdf_uploader:main"
+
+# Solution scripts
+solution-getting-started = "brain_ntnu_workshop_ai_2022.solution.getting_started:main"
+solution-controller = "brain_ntnu_workshop_ai_2022.solution.controller:main"
+solution-object-detection = "brain_ntnu_workshop_ai_2022.solution.object_detection:main"
+solution-cdf-upload = "brain_ntnu_workshop_ai_2022.solution.cdf_uploader:main"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
