@@ -3,7 +3,7 @@
 <p align="center">
   <img src="resources/cognite.png" alt="drawing" width="100" class="center"/>
   <img src="resources/brain_vertical_blue.png" alt="drawing" width="75" class="center"/>
-  <img src="resources/cognite.png" alt="drawing" width="100" class="center"/>
+  <img src="resources/cognite-white.png" alt="drawing" width="100" class="center"/>
 </p>
 
 ## Setup
