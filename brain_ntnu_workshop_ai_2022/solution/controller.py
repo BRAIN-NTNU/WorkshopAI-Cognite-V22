@@ -1,4 +1,5 @@
 import time
+from datetime import datetime
 from typing import Dict, List
 
 import cv2
@@ -7,7 +8,7 @@ import pygame
 from djitellopy import BackgroundFrameRead, Tello
 from torchvision.models.detection import SSD
 
-from brain_ntnu_workshop_ai_2022.workshop.object_detection import add_bounding_box_to_frame
+from brain_ntnu_workshop_ai_2022.solution.object_detection import add_bounding_box_to_frame, get_ssdlite_model, predict
 
 # Speed of the drone
 SPEED = 60
@@ -57,7 +58,7 @@ class FrontEnd(object):
 
         # TODO (Task 3): Fill in your code ########################################################
         ##################################################################################
-        self.model: SSD = None
+        self.model: SSD = get_ssdlite_model()
         ##################################################################################
 
         # Create update timer
@@ -112,8 +113,7 @@ class FrontEnd(object):
 
             # TODO(Task 3): Fill in your code ########################################################
             ##################################################################################
-            # Remove the comment to run the prediction on each frame.
-            # self.predict_frame()
+            self.predict_frame()
             ##################################################################################
 
             self.frame = self.flip_frame(self.frame)
@@ -129,12 +129,9 @@ class FrontEnd(object):
 
     def predict_frame(self) -> None:
         frame_reshaped = np.moveaxis(self.frame, -1, 0)  # This reshapes the frame to fit for the torchvision models
-
         # TODO(Task 3): Fill in your code ########################################################
         ##################################################################################
-        # Make predictions using predict method from workshop/object_detection.py
-        predictions: List[Dict[str, np.ndarray]] = "YOUR CODE HERE"
-        ##################################################################################
+        predictions: List[Dict[str, np.ndarray]] = predict(self.model, [frame_reshaped])
 
         # Visualize the bounding boxes if score is bigger than a threshold
         for pred in predictions:
@@ -144,6 +141,7 @@ class FrontEnd(object):
 
                     # Add bounding box to frame
                     self.frame = add_bounding_box_to_frame(self.frame.copy(), (x1, y1, x2, y2), label)
+        ##################################################################################
 
     def flip_frame(self, frame: np.ndarray) -> np.ndarray:
         frame = np.rot90(frame)
@@ -195,7 +193,12 @@ class FrontEnd(object):
             self.send_rc_control = False
         # TODO (Task 4): Fill in your code ########################################################
         ##################################################################################
-        # Save frame to file when SPACE is pressed
+        elif key == pygame.K_SPACE:
+            # Take a picture and save to folder
+            file_name = f"data/{datetime.now().strftime('%Y%m%d-%H-%M-%S_drone_img.png')}"
+            print(f"Save image to {file_name}")
+            frame = self.flip_frame(self.frame)
+            cv2.imwrite(file_name, frame)
         ##################################################################################
 
     def update(self) -> None:
