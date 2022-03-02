@@ -6,6 +6,11 @@
   <img src="resources/cognite-white.png" alt="drawing" width="100" class="center"/>
 </p>
 
+## Pre-workshop
+Download the Tello app from [App Store](https://apps.apple.com/us/app/tello/id1330559633) or 
+[Google Play](https://play.google.com/store/apps/details?id=com.ryzerobotics.tello&hl=en_US&gl=ES) and play around with
+the drone before starting any coding. We want to see those drones flying 🚁
+
 ## Setup
 
 ### Install Poetry
