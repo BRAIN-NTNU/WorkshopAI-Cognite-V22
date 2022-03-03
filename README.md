@@ -12,12 +12,23 @@ Download the Tello app from [App Store](https://apps.apple.com/us/app/tello/id13
 the drone before starting any coding. We want to see those drones flying 🚁
 
 ## Setup
+The first thing to do is to check your python version. Open a terminal and run
+```
+python --version
+```
+If your python version if 3.7 or 3.8 go to installing Poetry, else go to installing miniconda.
 
-### Install Poetry
+### Install Poetry (For python 3.7 or 3.8)
 
 In this project we are using [Poetry](https://python-poetry.org/) for python dependency management. This will
 automagically create a virtual environment and install the correct dependencies. To get started you first have to
 install poetry following.
+
+For osx / linux / bashonwindows:
+
+```
+curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
+```
 
 For windows powershell:
 
@@ -25,23 +36,30 @@ For windows powershell:
 (Invoke-WebRequest -Uri https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py -UseBasicParsing).Content | python -
 ```
 
-For osx (Mac) / linux / bashonwindows:
-
-```
-curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
-```
-
-
 To verify that you have installed Poetry correctly run
 
 ```
 poetry --version
 ```
 
-### Install Miniconda
-We use miniconda to make sure we are running a compatible python version.
-The installation files are in the setup-folder. After installing, open "Anaconda Prompt" and run
+### Install Miniconda (for python anything other than 3.7 and 3.8)
+We will use miniconda to make sure we are running a compatible python version.
+The installer files are in `setup/miniconda`.
 
+For windows: 
+Double press the file `Miniconda3-latest-Windows-x86_64.exe` and follow the instructions.
+
+For mac without M1-chip: 
+In the terminal, go to the `setup/miniconda` folder, and run 
+```
+bash Miniconda3-latest-MacOSX-x86_64.sh
+```
+For mac with M1 chip:
+In the terminal, go to the `setup/miniconda` folder, and run
+```
+bash Miniconda3-latest-MacOSX-arm64.sh
+```
+restart the terminal for the changes to take effect, then run
 ```
 conda create -name workshopai python=3.8
 ```
@@ -49,7 +67,7 @@ Enter "y" and run
 ```
 conda activate workshopai
 ```
-and
+To install poetry run
 ```
 pip install poetry
 ```
@@ -59,8 +77,8 @@ To verify that you have installed Poetry correctly run
 poetry --version
 ```
 
-### Installing wheels (Only required for windows)
-For windows users, move into `setup\wheels` and run 
+### For windows: Installing wheels
+Only for for windows users, in the terminal move into `setup\wheels` and run 
 ```
 pip install GDAL-3.4.1-cp38-cp38-win_amd64
 ```
@@ -72,7 +90,7 @@ pip install Fiona-1.8.21-cp38-cp38-win_amd64
 
 ### Install workshop dependencies
 
-Then to get started with the workshop move into `brain-ntnu-workshop-ai-2022-main` and run
+Then to get started with the workshop in the terminal move into `brain-ntnu-workshop-ai-2022-main` and run
 
 ```
 poetry install
