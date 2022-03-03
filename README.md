@@ -12,8 +12,13 @@ Download the Tello app from [App Store](https://apps.apple.com/us/app/tello/id13
 the drone before starting any coding. We want to see those drones flying 🚁
 
 ## Setup
+The first thing to do is to check your python version. Open a terminal and run
+```
+python --version
+```
+If your python version if 3.7 or 3.8 go to installing Poetry, else go to installing miniconda.
 
-### Install Poetry
+### Install Poetry (For python 3.7 or 3.8)
 
 In this project we are using [Poetry](https://python-poetry.org/) for python dependency management. This will
 automagically create a virtual environment and install the correct dependencies. To get started you first have to
@@ -37,15 +42,61 @@ To verify that you have installed Poetry correctly run
 poetry --version
 ```
 
+### Install Miniconda (for python anything other than 3.7 and 3.8)
+We will use miniconda to make sure we are running a compatible python version.
+The installer files are in `setup/miniconda`.
+
+For windows: 
+Double press the file `Miniconda3-latest-Windows-x86_64.exe` and follow the instructions.
+
+For mac without M1-chip: 
+In the terminal, go to the `setup/miniconda` folder, and run 
+```
+bash Miniconda3-latest-MacOSX-x86_64.sh
+```
+For mac with M1 chip:
+In the terminal, go to the `setup/miniconda` folder, and run
+```
+bash Miniconda3-latest-MacOSX-arm64.sh
+```
+Restart the terminal for the changes to take effect. For mac, run this in terminal. For windows, run this in anaconda prompt.
+```
+conda create -name workshopai python=3.8
+```
+Enter "y" and run
+```
+conda activate workshopai
+```
+To install poetry run
+```
+pip install poetry
+```
+To verify that you have installed Poetry correctly run
+
+```
+poetry --version
+```
+
+### For windows: Installing wheels
+Only for for windows users, in the terminal move into `setup\wheels` and run 
+```
+pip install GDAL-3.4.1-cp38-cp38-win_amd64.whl
+```
+then
+```
+pip install Fiona-1.8.21-cp38-cp38-win_amd64.whl
+```
+
+
 ### Install workshop dependencies
 
-Then to get started with the workshop move into `brain-ntnu-workshop-ai-2022` and run
+Then to get started with the workshop in the terminal move into `brain-ntnu-workshop-ai-2022-main` and run
 
 ```
 poetry install
 ```
 
-in the same folder as the `pyproject.toml` file is. In this file you will find and overview of all third-party libraries
+in the same folder as the `pyproject.toml` file. In this file you will find and overview of all third-party libraries
 that we will use, and some general information about the project. The
 `poetry.lock` file contains the exact information about the dependencies, so that everything is reproducible and makes
 sure that every installation looks exactly the same.
@@ -56,7 +107,7 @@ To test that you have installed everything correct you can run
 poetry run check-setup
 ```
 
-This is a custom script which sets up the environment and runs the coded specified in the
+This is a custom script which sets up the environment and runs the code specified in the
 `pyproject.toml` file under `[tool.poetry.scripts]`. There will be similar scripts for all tasks during this workshop.
 
 ## Task 1 - Getting Started
@@ -204,5 +255,12 @@ poetry run cdf-upload
 
 ## What now? 🏆
 Well now, if you get this far, first of all, great job! Play around with the functionality of the drone,
-and rumours have it that the drone can actually do flips in the air 👀 Arrange a race with your neigbours, and
-learn from each other. Think about the use cases for drones like this.
+and rumours have it that the drone can actually do flips in the air 👀 
+
+If you're hungry for more, here are a couple of challenging missions🔥
+
+- 📷 Make a face tracking selfie drone! Use object detection to find your face, and some clever logic to make the drone follow you around for the perfect autonomous selfie stick.
+
+- ✋Make the drone controllable with hand signs/movements! Detect a hand and use image porcessing to count the number and/or direction of fingers
+
+- 💫Make an autonomous racing drone! Ask the instructors for sheets of QR-codes. Use a QR-code detector and som clever logic to move from code to code and complete a race track of your making.
