@@ -80,11 +80,11 @@ poetry --version
 ### For windows: Installing wheels
 Only for for windows users, in the terminal move into `setup\wheels` and run 
 ```
-pip install GDAL-3.4.1-cp38-cp38-win_amd64
+pip install GDAL-3.4.1-cp38-cp38-win_amd64.whl
 ```
 then
 ```
-pip install Fiona-1.8.21-cp38-cp38-win_amd64
+pip install Fiona-1.8.21-cp38-cp38-win_amd64.whl
 ```
 
 
