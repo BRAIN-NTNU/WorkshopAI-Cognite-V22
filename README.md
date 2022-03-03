@@ -198,7 +198,7 @@ file.
 Run the code with
 
 ```
-poetry run object
+poetry run cdf-upload
 ```
 
 
