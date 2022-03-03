@@ -19,17 +19,18 @@ In this project we are using [Poetry](https://python-poetry.org/) for python dep
 automagically create a virtual environment and install the correct dependencies. To get started you first have to
 install poetry following.
 
-For osx / linux / bashonwindows:
-
-```
-curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
-```
-
 For windows powershell:
 
 ```
 (Invoke-WebRequest -Uri https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py -UseBasicParsing).Content | python -
 ```
+
+For osx (Mac) / linux / bashonwindows:
+
+```
+curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
+```
+
 
 To verify that you have installed Poetry correctly run
 
@@ -37,15 +38,47 @@ To verify that you have installed Poetry correctly run
 poetry --version
 ```
 
+### Install Miniconda
+We use miniconda to make sure we are running a compatible python version.
+The installation files are in the setup-folder. After installing, open "Anaconda Prompt" and run
+
+```
+conda create -name workshopai python=3.8
+```
+Enter "y" and run
+```
+conda activate workshopai
+```
+and
+```
+pip install poetry
+```
+To verify that you have installed Poetry correctly run
+
+```
+poetry --version
+```
+
+### Installing wheels (Only required for windows)
+For windows users, move into `setup\wheels` and run 
+```
+pip install GDAL-3.4.1-cp38-cp38-win_amd64
+```
+then
+```
+pip install Fiona-1.8.21-cp38-cp38-win_amd64
+```
+
+
 ### Install workshop dependencies
 
-Then to get started with the workshop move into `brain-ntnu-workshop-ai-2022` and run
+Then to get started with the workshop move into `brain-ntnu-workshop-ai-2022-main` and run
 
 ```
 poetry install
 ```
 
-in the same folder as the `pyproject.toml` file is. In this file you will find and overview of all third-party libraries
+in the same folder as the `pyproject.toml` file. In this file you will find and overview of all third-party libraries
 that we will use, and some general information about the project. The
 `poetry.lock` file contains the exact information about the dependencies, so that everything is reproducible and makes
 sure that every installation looks exactly the same.
@@ -56,7 +89,7 @@ To test that you have installed everything correct you can run
 poetry run check-setup
 ```
 
-This is a custom script which sets up the environment and runs the coded specified in the
+This is a custom script which sets up the environment and runs the code specified in the
 `pyproject.toml` file under `[tool.poetry.scripts]`. There will be similar scripts for all tasks during this workshop.
 
 ## Task 1 - Getting Started
@@ -204,5 +237,12 @@ poetry run object
 
 ## What now? 🏆
 Well now, if you get this far, first of all, great job! Play around with the functionality of the drone,
-and rumours have it that the drone can actually do flips in the air 👀 Arrange a race with your neigbours, and
-learn from each other. Think about the use cases for drones like this.
+and rumours have it that the drone can actually do flips in the air 👀 
+
+If you're hungry for more, here are a couple of challenging missions🔥
+
+- 📷 Make a face tracking selfie drone! Use object detection to find your face, and some clever logic to make the drone follow you around for the perfect autonomous selfie stick.
+
+- ✋Make the drone controllable with hand signs/movements! Detect a hand and use image porcessing to count the number and/or direction of fingers
+
+- 💫Make an autonomous racing drone! Ask the instructors for sheets of QR-codes. Use a QR-code detector and som clever logic to move from code to code and complete a race track of your making.
