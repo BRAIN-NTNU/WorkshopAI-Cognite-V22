@@ -59,7 +59,7 @@ In the terminal, go to the `setup/miniconda` folder, and run
 ```
 bash Miniconda3-latest-MacOSX-arm64.sh
 ```
-restart the terminal for the changes to take effect, then run
+Restart the terminal for the changes to take effect. For mac, run this in terminal. For windows, run this in anaconda prompt.
 ```
 conda create -name workshopai python=3.8
 ```
