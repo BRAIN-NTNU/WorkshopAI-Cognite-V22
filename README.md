@@ -120,12 +120,12 @@ model called **SSDLite** from the `torchvision` model library. SSDLite is a _Con
 and is pre-trained on [COCO](https://cocodataset.org/#home) train2017 (COCO = Common Objects in Context), which consists
 of 91 different classes like person, bicycle, car etc... The model take as input an image and outputs the predicted
 bounding boxes and its corresponding probability and label. For example a `bounding_box=(10, 10, 20, 20)`
-, `label=person` person, and  `score=0.9` tells us at that the bounding box covering the coordinates (10,10) and (20,20)
+, `label=person`, and  `score=0.9` tells us at that the bounding box covering the coordinates (10,10) and (20,20)
 has with a 90% probability a person inside the market area.
 
 ### A 🐻 or a 🚗?
 
-Now that we have a great way to view data visual data from the drone, let us try to use som neural networks to predict
+Now that we have a great way to view data visual data from the drone, let us try to use some neural networks to predict
 what the drone is actually seeing. As explained above we will use the SSDLite model for this. The reason for this is
 that SSDLite is really fast, and we can make predictions on every frame shown by the drone while running on your own
 computer.
@@ -150,7 +150,7 @@ poetry run controller
 
 ### Inspection points 🕵🏼‍️
 
-In Cognite have robots walking out in industrial areas. In most cases we only want to make predictions at certain
+In Cognite we have robots walking out in industrial areas. In most cases we only want to make predictions at certain
 inspection points, and not at every frame. We also usually do not want to make predictions on the robot itself, as this
 restricts us to smaller and faster neural networks like the SSDLite model. In order to run big models, we push that work
 to the cloud. As a first step towards predictions in the cloud, you first need to store the images. In this task you
